@@ -1,5 +1,7 @@
 # Find me
 
+[![Build Status](https://travis-ci.org/Tiago-Lira/find-me.svg?branch=master)](https://travis-ci.org/Tiago-Lira/find-me)
+
 Este repositorio foi desenvolvido como produto do Trabalho de Graduação do aluno Tiago Lira para o curso de Sistemas de Informação na Universidade Federal de Pernambuco.
 
 **Aluno:** Tiago Lira
