@@ -33,7 +33,7 @@ app = Flask(__name__)
 def index():
     ip_address = request.environ['REMOTE_ADDR']
     app.logger.info(f'{vars(request)}')
-    app.logger.info(f'{request.environ}')
+    app.logger.info(f'{vars(vars(request)["werkzeug.request"])}')
     app.logger.info(f'Finding location for ip {ip_address}')
     location = LocationTracker().track(ip_address)
     app.logger.info(f'Found: {location}')
