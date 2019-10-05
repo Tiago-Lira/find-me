@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Find me</title>
+    </head>
+    <body>
+
+        {% if location %}
+            <h1>Your current location is:</h1>
+            <img src="{{ location.country_flag }}" width="50"/>
+            <p>
+                {{ location.city }}, {{ location.region }} {{ location.zipcode }}
+            </p>
+        {% else %}
+            <h1>Location not found</h1>
+        {% endif %}
+    </body>
+</html>
