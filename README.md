@@ -2,11 +2,11 @@
 
 Este repositorio foi desenvolvido como produto do Trabalho de Graduação do aluno Tiago Lira para o curso de Sistemas de Informação na Universidade Federal de Pernambuco.
 
-Aluno: Tiago Lira
+**Aluno:** Tiago Lira
 
-Orientador: Vinícius Cardoso Garcia
+**Orientador:** Vinícius Cardoso Garcia
 
-Trabalho: Um pipeline de integração e entrega contínua.
+**Trabalho:** Um pipeline de integração e entrega contínua.
 
 
 ## Instruções de uso
