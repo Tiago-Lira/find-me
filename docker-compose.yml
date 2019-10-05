@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+
+  app:
+    command: flask run --host=0.0.0.0 --reload
+    stdin_open: true
+    build: .
+    image: tiagoliradsantos/find-me
+    volumes:
+      - .:/src
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_DEBUG: 1
+      FLASK_APP: find_me/app.py
