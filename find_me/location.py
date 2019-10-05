@@ -16,8 +16,8 @@ class Location:
 
 class LocationTracker:
 
-    def track(self, request) -> Optional[Location]:
-        data = IPStackTracker().track(request.remote_addr)
+    def track(self, ip_address: str) -> Optional[Location]:
+        data = IPStackAPI().get_location(ip_address)
         location = LocationFactory.from_ipstack(data)
 
         if not location.country:
@@ -26,12 +26,12 @@ class LocationTracker:
         return location
 
 
-class IPStackTracker:
+class IPStackAPI:
 
     def __init__(self, access_key: str = None):
         self._access_key = access_key or 'd7d14990b39e3dd4675f1c95f0d672b1'
 
-    def track(self, ip_address: str) -> dict:
+    def get_location(self, ip_address: str) -> dict:
         url = f'http://api.ipstack.com/{ip_address}?access_key={self._access_key}'  # noqa: E501
         response = requests.get(url)
         return json.loads(response.text)

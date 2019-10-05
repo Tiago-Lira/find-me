@@ -3,10 +3,6 @@ from unittest.mock import patch
 from find_me.location import Location, LocationTracker
 
 
-class Request:
-    remote_addr = '127.0.0.1'
-
-
 class Response:
     def __init__(self, text: dict):
         self.text = text
@@ -45,7 +41,7 @@ def test_returns_location_instance():
     """)
 
     with patch('find_me.location.requests.get', return_value=response):
-        result = LocationTracker().track(Request)
+        result = LocationTracker().track('127.0.0.1')
 
     assert isinstance(result, Location)
 
@@ -79,6 +75,6 @@ def test_when_location_is_not_found_returns_none():
     """)
 
     with patch('find_me.location.requests.get', return_value=response):
-        result = LocationTracker().track(Request)
+        result = LocationTracker().track('127.0.0.1')
 
     assert result is None

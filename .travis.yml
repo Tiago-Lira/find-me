@@ -10,3 +10,4 @@ script:
 
 after_success:
   - sh .travis/push_image.sh
+  - test "$TRAVIS_BRANCH" = "master" && sh .travis/deploy.sh

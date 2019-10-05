@@ -14,7 +14,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    location = LocationTracker().track(request)
+    ip_address = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+    location = LocationTracker().track(ip_address)
     return render_template('index.html', location=location)
 
 
