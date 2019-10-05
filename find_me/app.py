@@ -1,4 +1,5 @@
 import os
+import logging
 
 from flask import (
     Flask,
@@ -9,6 +10,8 @@ from flask import (
 from location import LocationTracker
 
 
+logger = logging.getLogger(__name__)
+
 app = Flask(__name__)
 
 
@@ -16,6 +19,8 @@ app = Flask(__name__)
 def index():
     ip_address = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
     app.logger.info(f'Finding location of {ip_address}')
+    logger.info(f'f:Finding location of {ip_address}')
+    print(f'p:Finding location of {ip_address}')
     location = LocationTracker().track(ip_address)
     return render_template('index.html', location=location)
 
