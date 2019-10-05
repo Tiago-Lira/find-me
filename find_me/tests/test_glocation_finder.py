@@ -1,6 +1,7 @@
 from unittest.mock import patch
 
-from find_me.location import Location, LocationTracker
+from find_me.geolocation import Location, GLocationFinder
+from find_me.ipstack import IPStackAPI
 
 
 class Response:
@@ -40,8 +41,8 @@ def test_returns_location_instance():
     }
     """)
 
-    with patch('find_me.location.requests.get', return_value=response):
-        result = LocationTracker().track('127.0.0.1')
+    with patch('find_me.ipstack.requests.get', return_value=response):
+        result = GLocationFinder(IPStackAPI()).find('127.0.0.1')
 
     assert isinstance(result, Location)
 
@@ -74,7 +75,7 @@ def test_when_location_is_not_found_returns_none():
     }
     """)
 
-    with patch('find_me.location.requests.get', return_value=response):
-        result = LocationTracker().track('127.0.0.1')
+    with patch('find_me.ipstack.requests.get', return_value=response):
+        result = GLocationFinder(IPStackAPI()).find('127.0.0.1')
 
     assert result is None
