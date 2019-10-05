@@ -6,5 +6,5 @@ else
     TAG="$TRAVIS_BRANCH"
 fi
 
-docker build -t $TRAVIS_REPO_SLUG:$TAG .
-docker run -t $TRAVIS_REPO_SLUG:$TAG pytest -v
+docker build -t $IMAGE_NAME:$TAG .
+docker run -t $IMAGE_NAME:$TAG pytest -v
