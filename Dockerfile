@@ -8,4 +8,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD waitress-serve --port=5000 find_me:app.app
+ENV PORT 5000
+
+CMD waitress-serve --port=$PORT find_me:app.app
