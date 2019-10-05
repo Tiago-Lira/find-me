@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD python find_me/app.py
+CMD waitress-serve find_me:app.app
