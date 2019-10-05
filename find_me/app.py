@@ -4,7 +4,7 @@ from logging.config import dictConfig
 from flask import Flask, render_template
 
 from find_me.geolocation import GLocationFinder
-from find_me.ipstack import IPStackAPI
+from find_me.ipstack import CachedIPStackAPI
 from find_me.utils import get_client_ip_address
 
 
@@ -26,7 +26,7 @@ dictConfig({
 
 app = Flask(__name__)
 
-glocation = GLocationFinder(IPStackAPI())
+glocation = GLocationFinder(CachedIPStackAPI())
 
 
 @app.route("/")
@@ -34,7 +34,7 @@ def index():
     ip_address = get_client_ip_address()
     app.logger.info(f'Finding location for ip {ip_address}')
     result = glocation.find(ip_address)
-    return render_template('index.html', result=result)
+    return render_template('index.html', location=result)
 
 
 if __name__ == "__main__":
