@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD waitress-serve find_me:app.app
+CMD waitress-serve --port=5000 find_me:app.app
