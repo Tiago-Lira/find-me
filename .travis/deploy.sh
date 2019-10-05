@@ -1,5 +1,5 @@
 #!/bin/sh
-docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+docker login -u $DOCKER_USERNAME -p $DOCKER_ACCESS_TOKEN
 
 if [ "$TRAVIS_BRANCH" = "master" ]; then
     TAG="latest"
