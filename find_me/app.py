@@ -8,6 +8,7 @@ from flask import (
 )
 
 from find_me.location import LocationTracker
+from find_me.ip import IPFinder
 
 
 dictConfig({
@@ -27,17 +28,6 @@ dictConfig({
 })
 
 app = Flask(__name__)
-
-
-class IPFinder:
-
-    @staticmethod
-    def find(request):
-        return (
-            request.environ.get('HTTP_X_FORWARDED_FOR')
-            or request.environ.get('X-Real-IP')
-            or request.remote_addr
-        )
 
 
 @app.route("/")
